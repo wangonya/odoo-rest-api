@@ -2,8 +2,10 @@ import os
 from xmlrpc import client
 
 from flask import Flask
+from flask_restful import Api
 
 app = Flask(__name__)
+api = Api(app)
 
 url = os.getenv('SERVER_URL')
 db = os.getenv('DB_NAME')
