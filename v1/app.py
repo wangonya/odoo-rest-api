@@ -97,30 +97,9 @@ class SaleOrder(Resource):
             return {'message': 'Sale order creation failed'}, 400
 
 
-class SaleOrderConfirm(Resource):
-    """Converts quotations to confirmed sales orders
-    POST is used here since only a single field (state) is being updated.
-    No data is required in the body. The id to update is taked from the url.
-    If flexibility was required to update more details, PATCH would be used,
-    with information to update being taken from the body."""
-
-    def post(self, sale_order_id):
-        sale_order = models.execute_kw(
-            db, 2, password, 'sale.order', 'write',
-            [[sale_order_id], {'state': 'sale'}]
-        )
-
-        if sale_order:
-            return {'message': 'Sale order confirmed'}, 200
-        else:
-            return {'message': 'Sale order confirmation failed'}, 400
-
-
 api.add_resource(Login, '/api/v1/login')
 api.add_resource(SaleOrder, '/api/v1/sale-order')
-api.add_resource(
-    SaleOrderConfirm,
-    '/api/v1/sale-order/<int:sale_order_id>/confirm')
+
 
 if __name__ == '__main__':
     app.run()
