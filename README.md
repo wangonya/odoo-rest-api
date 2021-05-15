@@ -1,8 +1,3 @@
-install reqs
-create db
-update .env
-init db (./odoo-bin -d odoo-rest-api -i base)
-run odoo server
 # odoo-rest-api
 
 ## Setup
@@ -20,7 +15,6 @@ run odoo server
 
 ## Endpoints
 
-`POST /api/login`
 |endpoint|method|sample request object|
 |---|---|---|
 |`/api/login`|`POST`|`{"username": "admin", "password": "admin"}`|
@@ -31,4 +25,4 @@ run odoo server
 
 * The `login` endpoint returns the user id if successful. This user id should be used as the username for the other endpoints.
 * Basic authentication is used for the sale order and delivery order processing endpoints. Username (user id) and Password are required.
-* Item name used as the search parameter for products when creating sale orders. If a duplicate item is found, the first one is used.
+* Item name is used as the search parameter for products when creating sale orders. If there are multiple items with the same name, the first one found is used.
