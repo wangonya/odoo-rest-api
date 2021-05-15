@@ -3,15 +3,32 @@ create db
 update .env
 init db (./odoo-bin -d odoo-rest-api -i base)
 run odoo server
-run this server
+# odoo-rest-api
 
+## Setup
 
-* item name used. for purpose of this test, if a duplicate item is found, the first one is used
-* would be better to use id but we'd have to find id every time
+1. Install requirements (`pip install -r requirements.txt`)
+2. Create an Odoo db (skip this if you want to use an existing one)
+3. Update `.env`
+4. Run odoo server
+5. Run api server:
+    - `chmod +x run_api.sh` (first time only)
+    - `./run_api.sh`
+6. Run tests:
+    - `chmod +x run_tests.sh` (first time only)
+    - `./run_tests.sh`
 
-* product id used according to product.product because that's what we'll use in SO
-  * could also have used id in product.template
+## Endpoints
 
-v1
-- chmod +x run_v1.sh
-- ./run_v1.sh
+`POST /api/login`
+|endpoint|method|sample request object|
+|---|---|---|
+|`/api/login`|`POST`|`{"username": "admin", "password": "admin"}`|
+|`/api/sale-order`|`POST`|`{"item_name": "Test Product1", "customer_name": "customer", "quantity": 1}`|
+|`api/process-delivery`|`POST`|`{"product_serial_number": "13", "sale_order_name": "S00040"}`|
+
+## Implementation Details
+
+* The `login` endpoint returns the user id if successful. This user id should be used as the username for the other endpoints.
+* Basic authentication is used for the sale order and delivery order processing endpoints. Username (user id) and Password are required.
+* Item name used as the search parameter for products when creating sale orders. If a duplicate item is found, the first one is used.
