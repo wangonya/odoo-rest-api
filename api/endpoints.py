@@ -16,13 +16,14 @@ class ApiResource(Resource):
         if request.authorization:
             self.username = request.authorization.username
             self.password = request.authorization.password
+        else:
+            self.username = app.config.get('ODOO_USER_NAME')
+            self.password = app.config.get('ODOO_USER_PASSWORD')
 
         super().__init__()
 
     def check_auth_details(self):
-        return request.authorization and all(
-            [request.authorization.username,
-             request.authorization.password])
+        return all([self.username, self.password])
 
 
 class Login(ApiResource):
