@@ -2,6 +2,7 @@ aniso8601==9.0.1
 attrs==21.2.0
 click==7.1.2
 Flask==1.1.2
+Flask-HTTPAuth==4.4.0
 Flask-RESTful==0.3.8
 importlib-metadata==4.0.1
 iniconfig==1.1.1
