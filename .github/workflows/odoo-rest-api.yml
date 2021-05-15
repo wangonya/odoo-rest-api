@@ -1,4 +1,4 @@
-name: Flask CI
+name: Odoo-Rest-Api CI
 
 on:
   push:

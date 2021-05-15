@@ -1,5 +1,7 @@
 # odoo-rest-api
 
+![example workflow](https://github.com/wangonya/odoo-rest-api/actions/workflows/flask.yml/badge.svg)
+
 ## Setup
 
 1. Install requirements (`pip install -r requirements.txt`)
@@ -23,6 +25,7 @@
 
 ## Implementation Details
 
+* Api uses Flask + xmlrpc as described in the [Odoo docs](https://www.odoo.com/documentation/13.0/developer/webservices/odoo.html)
 * The `login` endpoint returns the user id if successful. This user id should be used as the username for the other endpoints.
 * Basic authentication is used for the sale order and delivery order processing endpoints. Username (user id) and Password are required.
 * Item name is used as the search parameter for products when creating sale orders. If there are multiple items with the same name, the first one found is used.
