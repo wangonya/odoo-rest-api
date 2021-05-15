@@ -26,3 +26,4 @@
 * The `login` endpoint returns the user id if successful. This user id should be used as the username for the other endpoints.
 * Basic authentication is used for the sale order and delivery order processing endpoints. Username (user id) and Password are required.
 * Item name is used as the search parameter for products when creating sale orders. If there are multiple items with the same name, the first one found is used.
+* Tests have to connect to an online database so they might be a bit slow to run.
