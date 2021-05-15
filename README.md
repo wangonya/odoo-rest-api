@@ -1,6 +1,6 @@
 # odoo-rest-api
 
-![example workflow](https://github.com/wangonya/odoo-rest-api/actions/workflows/flask.yml/badge.svg)
+![example workflow](https://github.com/wangonya/odoo-rest-api/actions/workflows/odoo-rest-api.yml/badge.svg)
 
 ## Setup
 
